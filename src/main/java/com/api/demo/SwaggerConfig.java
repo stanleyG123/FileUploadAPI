@@ -15,28 +15,29 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 @ComponentScan(basePackageClasses = {
-	    FileUploadController.class
+        FileUploadController.class
 })
-public class SwaggerConfig {                                    
+public class SwaggerConfig {
     @Bean
-    public Docket api() { 
-        return new Docket(DocumentationType.SWAGGER_2)  
-          .select()                                  
-          .apis(RequestHandlerSelectors.basePackage("com.api.demo"))              
-          .paths(PathSelectors.any())                          
-          .build()
-          .apiInfo(metaData());
+    public Docket api() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.api.demo"))
+                .paths(PathSelectors.any())
+                .build()
+                .apiInfo(metaData());
     }
+
     private ApiInfo metaData() {
 
-    	 ApiInfo apiInfo = new ApiInfo(
-                 "Spring Boot REST API",
-                 "Spring Boot REST API for File Upload Application",
-                 "1.0",
-                 "Terms of service",
+        ApiInfo apiInfo = new ApiInfo(
+                "Spring Boot REST API",
+                "Spring Boot REST API for File Upload Application",
+                "1.0",
+                "Terms of service",
                 "",
                 "",
-                 "");
-         return apiInfo;
+                "");
+        return apiInfo;
     }
 }
