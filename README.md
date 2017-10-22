@@ -16,7 +16,7 @@ __To build__ : run mvn install
 
 __To run__   :  mvn spring-boot:run
 
-__To access__ : copy and paste this URL in your browser http://localhost:8080/swagger-ui.htm
+__To access__ : copy and paste this URL in your browser http://localhost:8080/swagger-ui.html
 
 #Known issues:
 - Swagger is not setting content-type correctly for multipart form submissions ( will fix next release)
