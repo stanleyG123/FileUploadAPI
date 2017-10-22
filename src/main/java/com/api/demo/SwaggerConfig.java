@@ -1,5 +1,6 @@
 package com.api.demo;
 
+import com.api.demo.controller.FileUploadController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

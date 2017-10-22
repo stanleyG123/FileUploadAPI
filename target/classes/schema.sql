@@ -1,4 +1,6 @@
-/*DROP TABLE FILE_INFO;*/
+/**
+  Tracks file metadata
+ */
 CREATE TABLE FILE_INFO(
   ID			  INT not null,
   ENTRY_NAME       VARCHAR2(2000),
