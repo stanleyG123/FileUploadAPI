@@ -67,11 +67,17 @@ public class FileUploadController {
     public
     @ResponseBody
     List<FileInfo> uploadFile(
+            @ApiParam(value = "file for upload", required = true)
             @RequestPart("incomingFile") MultipartFile incomingFile,
+            @ApiParam(value = "file metadata", required = true)
             @RequestPart("fileInfo") FileInfo fileInfo
     ) throws IOException {
-        storageSvc.store(incomingFile, fileInfo);
-        return storageSvc.retrieveAllFiles();
+        if(incomingFile != null && !incomingFile.isEmpty()){
+            storageSvc.store(incomingFile, fileInfo);
+            return storageSvc.retrieveAllFiles();
+        }else {
+            throw new IllegalArgumentException(" Both the submission file and metadata must be present");
+        }
     }
 
 

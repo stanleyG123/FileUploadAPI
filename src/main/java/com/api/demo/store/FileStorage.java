@@ -1,6 +1,7 @@
 package com.api.demo.store;
 
 import com.api.demo.model.FileInfo;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 

@@ -1,6 +1,7 @@
 package com.api.demo.store;
 
 import com.api.demo.model.FileInfo;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,7 +21,7 @@ import java.util.List;
  * @author stan
  */
 @Transactional
-@Service
+@Repository
 public class FileStorageMemDB implements FileStorage {
 
     @PersistenceContext
@@ -29,17 +30,21 @@ public class FileStorageMemDB implements FileStorage {
     @Override
     public void store(MultipartFile incomingFile, FileInfo info) throws IOException {
 
-        File tempFile = File.createTempFile(incomingFile.getName(), ".tmp");
-        Files.copy(incomingFile.getInputStream(),
-                Paths.get(tempFile.getAbsolutePath()),
-                StandardCopyOption.REPLACE_EXISTING);
+        if (incomingFile != null && info != null){
+            File tempFile = File.createTempFile(incomingFile.getName(), ".tmp");
+            Files.copy(incomingFile.getInputStream(),
+                    Paths.get(tempFile.getAbsolutePath()),
+                    StandardCopyOption.REPLACE_EXISTING);
 
 
-        info.setFilePath(tempFile.getAbsolutePath());
-        // should probbly come from JWT , ot some SAML token
-        info.setUploadUser("Stan");
+            info.setFilePath(tempFile.getAbsolutePath());
+            // should probbly come from JWT , ot some SAML token
+            info.setUploadUser("Stan");
 
-        entityManager.persist(info);
+            entityManager.persist(info);
+        }else{
+            throw new IllegalArgumentException (" Incoming file and file metadata must not be null");
+        }
     }
 
     @Override
