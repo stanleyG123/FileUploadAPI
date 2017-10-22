@@ -1,6 +1,0 @@
-com/api/demo/model/FileInfo.class
-com/api/demo/Application.class
-com/api/demo/store/FileStorageMemDB.class
-com/api/demo/store/FileStorage.class
-com/api/demo/controller/FileUploadController.class
-com/api/demo/SwaggerConfig.class
